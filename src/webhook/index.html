@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abrir Workflow</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <h2>Execution Workflow: moz-extension:// ou chrome-extension:// extensionId, workflow, variables</h2>
+    <p><strong>URL:</strong> <span id="workflow-link"></span></p>
+
+    <script>        
+        const urlParams = new URLSearchParams(window.location.search);
+        const extensionId = urlParams.get("extension");
+        const workflow = urlParams.get("workflow");
+
+        if (extensionId && workflow) {          
+            let baseUrl = `${extensionId}/execute.html#/${workflow}?`;
+            
+            urlParams.forEach((value, key) => {
+                if (key !== "extension" && key !== "workflow") {
+                    baseUrl += `${key}=${encodeURIComponent(value)}&`;
+                }
+            });
+            
+            const finalUrl = baseUrl.slice(0, -1);
+
+            document.getElementById("workflow-link").innerHTML = `<a href="${finalUrl}" target="_blank">${finalUrl}</a>`;
+
+            window.parent.postMessage({
+                type: 'OPEN_WORKFLOW',
+                workflow: workflow,
+                params: Object.fromEntries(urlParams.entries())
+            }, '*'); 
+            
+            window.open(finalUrl, "_blank");
+            window.close();
+        } else {
+            document.getElementById("workflow-link").innerText = "'extension' and 'workflow' parameters are mandatory";
+        }
+    </script>
+</body>
+</html>

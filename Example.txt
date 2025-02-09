@@ -1,0 +1,50 @@
+
+window.dispatchEvent(new CustomEvent('__automaExecuteWorkflow', {
+    detail: { 
+        publicId: 'testWork',// Use publicId
+        data: { 
+            variables: {
+                name: 'John Doe',
+                search: 'Hello world'
+            }
+        } 
+    }
+}));
+
+
+window.dispatchEvent(new CustomEvent('automa:execute-workflow', {
+    detail: { 
+        publicId: 'testWork', // Use publicId
+        data: { 
+            variables: {
+                name: 'John Doe',
+                search: 'Hello world'
+            }
+        } 
+    }
+}));
+
+
+moz-extension://754b905a-b14c-44a3-9a3f-443c5d687421/execute.html#/2h-pQ_wB3Eu1uEoIR1RFt?name=value&search=teste
+
+chrome-extension://infppggnoaenmfagbfknfkancpbljcca/execute.html#/0uN3j9AhAEBAL3lkV4JEP?name=John%20Doe&search=Hello%20world
+
+moz-extension://330bb592-fb5d-4c58-b452-f950bb6ec936/execute.html#/0Uo31709nrB2qaO8ye6t0?name=maria&search=teste
+
+moz-extension://330bb592-fb5d-4c58-b452-f950bb6ec936/execute.html#/0Uo31709nrB2qaO8ye6t0?search={"id": "12345","nome": "Test Workflow","desc": "example workflow test."}
+
+http://localhost:3001/webhook.html?extension=moz-extension://15d65b92-a555-43d0-a348-8054f891bd29&workflow=20Whme8bZ6xDtWLVCjDC2&search=teste&name=maria
+
+http://localhost:3001/webhook.html?extension=chrome-extension://fkpamfbcldbfodllcnnihjjkgjmekkfh&workflow=c7jL39YT_9zMPQbqbNk0-&search=teste&name=maria
+
+
+
+http://127.0.0.1:5500/build/
+
+chrome-extension//fkpamfbcldbfodllcnnihjjkgjmekkfh/execute.html#/t9d_cP-SiSPFKhUwrn5NI?search=VAI%20DAR%20CERTO!!&name=maria
+
+chrome-extension://fkpamfbcldbfodllcnnihjjkgjmekkfh/
+
+
+
+chrome-extension://infppggnoaenmfagbfknfkancpbljcca/execute.html#/0uN3j9AhAEBAL3lkV4JEP?search=VAI%20DAR%20CERTO!!&name=maria

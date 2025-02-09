@@ -86,5 +86,11 @@ const links = [
     icon: 'riArticleLine',
     url: 'https://blog.automa.site',
   },
+  {
+    name: 'WebHook',
+    icon: 'riArticleLine',
+    // url: 'http://localhost:3001/webhook.html?extension=chrome-extension://fkpamfbcldbfodllcnnihjjkgjmekkfh&workflow=c7jL39YT_9zMPQbqbNk0-&search=teste&name=maria',
+    url: `http://127.0.0.1:5500/src/webhook/index.html?extension=${window.location.origin}&workflow=re2nvWdCfVoyRUSBrxfla&search=teste&name=maria`,
+  },
 ];
 </script>

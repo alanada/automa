@@ -187,6 +187,11 @@ const options = {
           to: path.join(__dirname, 'build'),
           force: true,
         },
+        {
+          from: 'src/assets/images/favicon.ico', // Nova entrada para o favicon
+          to: path.join(__dirname, 'build'),
+          force: true,
+        },
       ],
     }),
     new HtmlWebpackPlugin({
@@ -205,6 +210,12 @@ const options = {
       template: path.join(__dirname, 'src', 'execute', 'index.html'),
       filename: 'execute.html',
       chunks: ['execute'],
+      cache: false,
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'webhook', 'index.html'),
+      filename: 'webhook.html',
+      chunks: ['webhook'],
       cache: false,
     }),
     new HtmlWebpackPlugin({

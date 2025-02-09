@@ -1,21 +1,31 @@
-import { parseJSON } from '@/utils/helper';
 import { sendMessage } from '@/utils/message';
 import Browser from 'webextension-polyfill';
+
+function safeParseJSON(value, fallback) {
+  try {
+    return JSON.parse(value);
+  } catch (e) {
+    return fallback !== undefined ? fallback : value;
+  }
+}
 
 function getWorkflowDetail() {
   let hash = window.location.hash.slice(1);
   if (!hash.startsWith('/')) hash = `/${hash}`;
 
-  const { pathname, searchParams } = new URL(window.location.origin + hash);
+  const url = new URL(window.location.origin + hash);
+  const { pathname, searchParams } = url;
 
   const variables = {};
   const { 1: workflowId } = pathname.split('/');
 
-  searchParams.forEach((key, value) => {
-    const varValue = parseJSON(decodeURIComponent(value), '##_empty');
-    if (varValue === '##_empty') return;
+  searchParams.forEach((value, key) => {
+    const decodedValue = decodeURIComponent(value);
+    const varValue = safeParseJSON(decodedValue, decodedValue);
 
-    variables[key] = varValue;
+    if (varValue !== '##_empty') {
+      variables[key] = varValue;
+    }
   });
 
   return { workflowId: workflowId ?? '', variables };

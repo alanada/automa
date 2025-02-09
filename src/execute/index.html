@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Execute</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execute</title>
 </head>
 <body>
+    <script>        
+        window.addEventListener('message', function(event) {   
+            /*         
+            if (event.origin !== 'http://localhost:3001') { 
+                console.warn('Message received from an untrusted source:', event.origin);
+                return;
+            }
+            */
+
+            const data = event.data;
+
+            if (data.type === 'OPEN_WORKFLOW') {
+                const workflow = data.workflow;
+                const params = data.params;
+                
+                let url = `execute.html#/${workflow}?`;
+                
+                for (const [key, value] of Object.entries(params)) {
+                    if (key !== 'extension' && key !== 'workflow') {
+                        url += `${key}=${encodeURIComponent(value)}&`;
+                    }
+                }
+               
+                url = url.slice(0, -1);
+
+                window.location.href = url;
+            }
+        }, false);
+    </script>
 </body>
 </html>
