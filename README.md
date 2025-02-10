@@ -123,20 +123,6 @@ moz-extension://330bb592-fb5d-4c58-b452-f950bb6ec936/execute.html#/0Uo31709nrB2q
 
 moz-extension://330bb592-fb5d-4c58-b452-f950bb6ec936/execute.html#/0Uo31709nrB2qaO8ye6t0?data={"id": "12345","nome": "Test Workflow","desc": "example workflow test."}
 
-After execute project: yarn dev:firefox  <br>
-
-http://localhost:3001/webhook.html?extension=moz-extension://15d65b92-a555-43d0-a348-8054f891bd29&workflow=20Whme8bZ6xDtWLVCjDC2&search=teste&name=maria
-
-http://localhost:3001/webhook.html?extension=chrome-extension://fkpamfbcldbfodllcnnihjjkgjmekkfh&workflow=c7jL39YT_9zMPQbqbNk0-&search=teste&name=maria
-
-After execute project to Go live Server vscode:  <br>
-
-http://127.0.0.1:5500/src/webhook/index.html?extension=chrome-extension://fkpamfbcldbfodllcnnidddfegjmekkfh&workflow=kfg25KNnKddT1_Tf3jnq&produtos=test
-
-http://127.0.0.1:5500/src/webhook/index.html?extension=moz-extension://fdfdfd-a555-43d0-a348-8054f891bd29&workflow=kfg25KNnKdd1_Tf3jnq&produtos=test
-
-* With local server ports and possible external execution if the ports are exposed.
-
 ## License
 Source code in this repository is variously licensed under the GNU Affero General Public License (AGPL), or the [Automa Commercial License](https://www.automa.site/license/commercial/).
 
